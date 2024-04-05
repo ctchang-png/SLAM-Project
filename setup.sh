@@ -26,6 +26,10 @@ fi
 if [ ! -d "ORB_SLAM2" ]; then
     # Clone ORB_SLAM2 repository
     git clone https://github.com/raulmur/ORB_SLAM2.git
+    cd ORB_SLAM2
+    wget https://gist.githubusercontent.com/matlabbe/c10403c5d44af85cc3585c0e1c601a60/raw/48adf04098960d86ddf225f1a8c68af87bfcf56e/orbslam2_f2e6f51_marchnative_disabled.patch
+    git apply orbslam2_f2e6f51_marchnative_disabled.patch
+    cd ..
 else
     echo "ORB_SLAM2 repository already exists locally."
 fi

@@ -1,6 +1,6 @@
 run bash setup.sh from project root
 
-Some file changes are required for the build to function:
+Some file changes are required for the build to function. These are handled in setup.sh.
 
 1. Pangolin/CMakeModules/FindFFMPEG.cmake
 - line #63, 64
@@ -80,3 +80,9 @@ TO
 {
 	// throw std::runtime_error("Pangolin in X11: ...");
 }
+
+5. In order to prevent "double free or corruption" error, need to patch ORB_SLAM2 for march native building 
+wget https://gist.githubusercontent.com/matlabbe/c10403c5d44af85cc3585c0e1c601a60/raw/48adf04098960d86ddf225f1a8c68af87bfcf56e/orbslam2_f2e6f51_marchnative_disabled.patch
+git apply orbslam2_f2e6f51_marchnative_disabled.patch
+
+6. How to prevent "EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;" warning in build?
